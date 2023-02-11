@@ -25,17 +25,12 @@ export const projectsRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      try {
-        return await prisma.projects.create({
-            data: {
-              id: input.id,
-              title: input.title,
-              description: input.description
-            }
-          })
-      } catch(error) {
-        // set error in store when error
-        console.log(error)
-      }
+      return await prisma.projects.create({
+        data: {
+          id: input.id,
+          title: input.title,
+          description: input.description
+        }
+      })
     })
 })

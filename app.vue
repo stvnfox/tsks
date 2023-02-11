@@ -6,8 +6,8 @@
 </script>
 
 <template>
-  <div>
-    {{ data.data }}
-    {{ todo.data }}
-  </div>
+  <section class="flex min-h-screen bg-sky-800">
+    <sidebar class="w-1/4"/>
+    <todo-wrapper class="w-3/4"/>
+  </section>
 </template>

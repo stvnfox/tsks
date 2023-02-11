@@ -12,9 +12,13 @@
     "@prisma/client": "^4.10.1",
     "@tailwindcss/forms": "^0.5.3",
     "nuxt": "^3.1.2",
+    "pinia": "^2.0.30",
     "prisma": "^4.10.1"
   },
   "dependencies": {
+    "@formkit/nuxt": "1.0.0-beta.15",
+    "@nuxt/devtools": "^0.1.2",
+    "@pinia/nuxt": "^0.4.6",
     "@trpc/client": "^10.11.0",
     "@trpc/server": "^10.11.0",
     "trpc-nuxt": "^0.6.0",

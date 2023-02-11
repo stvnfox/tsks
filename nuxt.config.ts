@@ -1,11 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: [
-        '@nuxtjs/tailwindcss',
-    ],
+    app: {
+        head: {
+            title: 'TSKS'
+        }
+    },
     build: {
         transpile: ['trpc-nuxt']
     },
+    modules: [
+        '@nuxtjs/tailwindcss',
+        '@nuxt/devtools',
+        '@pinia/nuxt',
+        '@formkit/nuxt'
+    ],
     tailwindcss: {
         cssPath: '~/assets/css/main.css',
         configPath: 'tailwind.config',

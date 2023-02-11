@@ -1,16 +1,11 @@
-import { z } from 'zod'
+import { PrismaClient } from '@prisma/client'
 import { publicProcedure, router } from '../trpc'
+
+const prisma = new PrismaClient()
 
 export const projectsRouter = router({
   get: publicProcedure
-    .input(
-      z.object({
-        text: z.string().nullish(),
-      }),
-    )
-    .query(({ input }) => {
-      return {
-        greeting: `hello ${input?.text ?? 'world'}`,
-      }
+    .query(async () => {
+        return await prisma.projects.findMany()
     }),
 })

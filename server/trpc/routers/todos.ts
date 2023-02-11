@@ -1,5 +1,8 @@
+import { PrismaClient } from '@prisma/client'
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
+
+const prisma = new PrismaClient()
 
 export const todoRouter = router({
   get: publicProcedure
@@ -10,9 +13,13 @@ export const todoRouter = router({
         }),
       }),
     )
-    .query(({ input }) => {
-      return {
-        project: `Project id: ${input.projectId}`,
-      }
+    .query(async ({ input }) => {
+        const todos = await prisma.todos.findUnique({
+          where: {
+            id: input.projectId
+          }
+        })
+
+      return todos
     }),
 })

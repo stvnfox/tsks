@@ -1,5 +1,12 @@
+<script setup lang="ts">
+  const { $client } = useNuxtApp()
+  const data = await $client.projects.get.useQuery({ text: 'Steven' })
+  const todo = await $client.todos.get.useQuery({ projectId: 0 })
+</script>
+
 <template>
-  <div class="container">
-    <h1>TSKS</h1>
+  <div>
+    {{ data.data }}
+    {{ todo.data }}
   </div>
 </template>

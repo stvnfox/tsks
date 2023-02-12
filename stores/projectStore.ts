@@ -21,7 +21,7 @@ export const useProjectStore = defineStore('project-store', () => {
     persist: [
         {
             paths: ['selectedProject'],
-            storage: sessionStorage
+            storage: persistedState.sessionStorage
         }
     ]
 })

@@ -19,7 +19,7 @@
 
             store.$patch({
                 totalProjects: data.value.length,
-                selectedProject: store.selectedProject ?? data.value[0]
+                selectedProject: store.selectedProject.title ? store.selectedProject : data.value[0]
             })
         }
     }
@@ -47,7 +47,7 @@
 </script>
 
 <template>
-    <div>
+    <div class="my-8">
         <h3 
             class="text-sm uppercase" 
             v-text="boardsTitle"

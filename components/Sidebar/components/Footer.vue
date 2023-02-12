@@ -1,10 +1,6 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <div>
         <!-- Add theme switcher component here -->
-        <sidebar-components-toggle/>
+        <sidebar-components-hide-button/>
     </div>
 </template>

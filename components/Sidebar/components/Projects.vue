@@ -19,7 +19,7 @@
 
             store.$patch({
                 totalProjects: data.value.length,
-                selectedProject: store.selectedProject.title ? store.selectedProject : data.value[0]
+                selectedProject: store.selectedProject ?? data.value[0]
             })
         }
     }

@@ -17,7 +17,7 @@
 
 <template>
     <button 
-        class="flex items-center fixed bottom-8 left-8 border border-sky-900 hover:border-white bg-sky-900 text-white text-sm rounded-xl transition-colors py-4 px-6"
+        class="flex items-center fixed bottom-6 left-6 border border-sky-900 hover:border-white bg-sky-900 text-white text-sm rounded-lg transition-colors py-2 px-4"
         @click="showSidebar"
     >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">

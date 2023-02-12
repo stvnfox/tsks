@@ -8,7 +8,7 @@ export interface IProject {
 
 export const useProjectStore = defineStore('project-store', () => {
     const projectIsAdded = ref(false)
-    const selectedProject = ref({} as IProject)
+    const selectedProject = ref(null as null | IProject)
     const totalProjects = ref(0)
 
     return { 

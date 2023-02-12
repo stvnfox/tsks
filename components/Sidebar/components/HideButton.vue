@@ -17,7 +17,7 @@
 
 <template>
     <button 
-        class="flex items-center justify-center text-white text-sm py-4"
+        class="flex items-center justify-center text-white text-sm"
         @click="hideSidebar"
     >
         <svg 

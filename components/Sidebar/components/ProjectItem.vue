@@ -17,7 +17,7 @@
 <template>
     <li>
         <button 
-            :class="{'underline': project.id === store.selectedProject.id}"
+            :class="{'underline': project.id === store.selectedProject?.id}"
             class="text-white"
             v-text="project.title"
             @click="setSelectedProject(project)"

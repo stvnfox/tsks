@@ -3,6 +3,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
+  darkMode: 'class',
   theme: {
     container: {
       center: true,

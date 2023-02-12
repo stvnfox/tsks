@@ -4,6 +4,7 @@ specifiers:
   '@formkit/nuxt': 1.0.0-beta.15
   '@nuxt/devtools': ^0.1.2
   '@nuxtjs/tailwindcss': ^6.3.1
+  '@pinia-plugin-persistedstate/nuxt': ^1.0.0
   '@pinia/nuxt': ^0.4.6
   '@prisma/client': ^4.10.1
   '@tailwindcss/forms': ^0.5.3
@@ -26,6 +27,7 @@ dependencies:
 
 devDependencies:
   '@nuxtjs/tailwindcss': 6.3.1
+  '@pinia-plugin-persistedstate/nuxt': 1.0.0_lo54kkkyl5mmzcydynlrcmvxry
   '@prisma/client': 4.10.1_prisma@4.10.1
   '@tailwindcss/forms': 0.5.3
   nuxt: 3.2.0
@@ -1190,6 +1192,20 @@ packages:
       - webpack
     dev: true
 
+  /@pinia-plugin-persistedstate/nuxt/1.0.0_lo54kkkyl5mmzcydynlrcmvxry:
+    resolution: {integrity: sha512-oBLnkFXy0mcP9wCR0NQj1SguhgalEoubDF302gpRr1lh0V34vSL2Nlw8XDwRrULq5v3eHt4da632YSjNny1+BA==}
+    peerDependencies:
+      '@pinia/nuxt': ^0.4.4
+    dependencies:
+      '@nuxt/kit': 3.2.0
+      '@pinia/nuxt': 0.4.6
+      pinia-plugin-persistedstate: 3.0.2_pinia@2.0.30
+    transitivePeerDependencies:
+      - pinia
+      - rollup
+      - supports-color
+    dev: true
+
   /@pinia/nuxt/0.4.6:
     resolution: {integrity: sha512-HjrYEfLdFpmsjhicPJgL36jVhzHWukIQPFFHGTSF84Cplu+f2nY2XHKqe9ToHzE9rLee2RjLOwAzOnXa/I/u6A==}
     dependencies:
@@ -1201,7 +1217,6 @@ packages:
       - supports-color
       - typescript
       - vue
-    dev: false
 
   /@planetscale/database/1.5.0:
     resolution: {integrity: sha512-Qwh7Or1W5dB5mZ9EQqDkgvkDKhBBmQe58KIVUy0SGocNtr5fP4JAWtvZ6EdLAV6C6hVpzNlCA2xIg9lKTswm1Q==}
@@ -4010,6 +4025,14 @@ packages:
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+
+  /pinia-plugin-persistedstate/3.0.2_pinia@2.0.30:
+    resolution: {integrity: sha512-84vPyUhPA/8Pr+1mT1ioNb2d8z4tvdgYRqMQf8xyauOVBKjo0ZcRBwPQBV7ZAJG43Kwar43nXG2jU+ZMvAFFRQ==}
+    peerDependencies:
+      pinia: ^2.0.0
+    dependencies:
+      pinia: 2.0.30
+    dev: true
 
   /pinia/2.0.30:
     resolution: {integrity: sha512-q6DUmxWwe/mQgg+55QQjykpKC+aGeGdaJV3niminl19V08dE+LRTvSEuqi6/NLSGCKHI49KGL6tMNEOssFiMyA==}

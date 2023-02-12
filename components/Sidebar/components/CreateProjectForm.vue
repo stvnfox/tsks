@@ -23,13 +23,21 @@
 
     const createProject = async (fields: ICreateProjectFields) => {
         try {
+            // Create project call
             await $client.projects.create.mutate({
                 id: store.totalProjects + 1,
                 title: fields.name,
                 description: fields.description
             })
 
+            // Set state of submit
             state.callSucceeded = true
+            store.$patch({
+                projectIsAdded: true
+            })
+
+            // Close modal
+            closeModal()
         } catch(error) {
             state.callFailed = true
         }
@@ -80,7 +88,7 @@
                 id="create-project-description"
                 validation="required"
                 name="description"
-                label="Your Essay"
+                label="Description"
                 rows="10"
                 outer-class="mb-4"
                 input-class="w-3/4"
@@ -94,16 +102,5 @@
                 Something went wrong. Please try again later.
             </p>
         </form-kit>
-        <div v-else>
-            <p>
-                Project successfully added!
-            </p>
-            <button 
-                class="bg-black text-white w-fit px-4 py-2 rounded-lg mt-4"
-                @click="closeModal"
-            >
-                Close window
-            </button>
-        </div>
     </div>
 </template>

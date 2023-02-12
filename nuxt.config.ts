@@ -12,6 +12,7 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxt/devtools',
         '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
         '@formkit/nuxt'
     ],
     tailwindcss: {

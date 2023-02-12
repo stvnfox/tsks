@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { IProject, useProjectStore } from '~~/stores/projectStore';
-    
+
     const { $client } = useNuxtApp()
     const store = useProjectStore()
     const state = reactive({
@@ -10,8 +10,8 @@
     const boardsTitle = computed(() => {
         return `All boards (${state.projects.length})`
     })
-    
-    onMounted(async () => {
+
+    const getProjects = async () => {
         const { data } = await $client.projects.get.useQuery()
     
         if(data.value) {
@@ -19,9 +19,30 @@
 
             store.$patch({
                 totalProjects: data.value.length,
-                selectedProject: data.value[0]
+                selectedProject: store.selectedProject ?? data.value[0]
             })
         }
+    }
+
+    watch(
+        () => store.projectIsAdded,
+        async () => {
+            if(store.projectIsAdded) {
+                await getProjects()
+
+                store.$patch({
+                    selectedProject: state.projects[state.projects.length - 1]
+                })
+
+                store.$patch({
+                    projectIsAdded: false
+                })
+            }
+        }
+    )
+    
+    onMounted(() => {
+        getProjects()
     })
 </script>
 

@@ -1,13 +1,15 @@
 <script setup lang="ts">
-  const { $client } = useNuxtApp()
+  import { useSidebarStore } from './stores/sidebarStore';
 
-  const data = await $client.projects.get.useQuery()
-  const todo = await $client.todos.get.useQuery({ projectId: 0 })
+  const store = useSidebarStore()
 </script>
 
 <template>
   <section class="flex min-h-screen bg-sky-800">
-    <sidebar class="w-1/4"/>
-    <todo-wrapper class="w-3/4"/>
+    <sidebar 
+      :class="store.showSidebar ? 'w-1/4' : 'w-[80px]'"
+      class="transition-all ease-in-out"
+    />
+    <todo-wrapper :class="store.showSidebar ? 'w-3/4' : 'w-full'"/>
   </section>
 </template>

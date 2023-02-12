@@ -47,7 +47,7 @@
 </script>
 
 <template>
-    <div class="my-8">
+    <div class="grow my-8">
         <h3 
             class="text-sm uppercase" 
             v-text="boardsTitle"

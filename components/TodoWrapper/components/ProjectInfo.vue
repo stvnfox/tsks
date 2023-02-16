@@ -5,8 +5,8 @@
 </script>
 
 <template>
-    <div v-if="store.selectedProject">
-        <h2 v-text="store.selectedProject.title"/>
-        <p v-text="store.selectedProject.description"/>
+    <div>
+        <h2 v-text="store.selectedProject?.title"/>
+        <p v-text="store.selectedProject?.description"/>
     </div>
 </template>

@@ -10,7 +10,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.3
   '@trpc/client': ^10.11.0
   '@trpc/server': ^10.11.0
-  nuxt: ^3.1.2
+  nuxt: ^3.2.0
   pinia: ^2.0.30
   prisma: ^4.10.1
   trpc-nuxt: ^0.6.0

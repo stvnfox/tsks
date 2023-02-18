@@ -7,6 +7,7 @@
 <template>
     <section class="bg-sky-800">
         <todo-wrapper-components-header/>
+        
         <todo-wrapper-components-show-sidebar-button 
             v-if="!store.showSidebar"
         />

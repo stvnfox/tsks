@@ -7,5 +7,6 @@
         <client-only>
             <todo-wrapper-components-project-info/>
         </client-only>
+        <todo-wrapper-components-create-task/>
     </section>
 </template>

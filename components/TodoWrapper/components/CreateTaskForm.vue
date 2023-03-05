@@ -1,12 +1,26 @@
 <script setup lang="ts">
+    import { token } from '@formkit/utils'
+    import { useProjectStore } from '~~/stores/projectStore';
+
     const emit = defineEmits<{
         (e: 'close-modal'): void
     }>()
+    
+    const { $client } = useNuxtApp()
+    const subtasks = ref([] as string[])
+    const store = useProjectStore()
 
     const state = reactive({
         callSucceeded: false,
         callFailed: false,
+        title: '',
+        description: '',
+        status: 'Todo',
         subtasks: [] as string[]
+    })
+
+    const statusOptions = computed(() => {
+        return ['Todo', 'Active', 'Done']
     })
 
     const closeModal = () => {
@@ -14,11 +28,34 @@
     }
 
     const addSubtask = () => {
-        state.subtasks.push('')
+        subtasks.value.push(token())
+    }
+
+    const removeSubtask = (e: any) => {
+        const key = e.target.getAttribute('data-key')
+        subtasks.value = subtasks.value.filter(item => item !== key)
     }
 
     const createTask = async () => {
-        console.log(state)
+        try {
+            // Create todo call
+            await $client.todos.create.mutate({
+                id: Math.random(),
+                created_at: new Date().toLocaleDateString(),
+                projectId: Number(store.selectedProject?.id),
+                title: state.title,
+                description: state.description,
+                subtasks: state.subtasks,
+                status: state.status
+            })
+
+            // Set state of submit
+            state.callSucceeded = true
+
+            closeModal()
+        } catch(error) {
+            state.callFailed = true
+        }
     }
 </script>
 
@@ -51,6 +88,7 @@
             @submit="createTask"
         >
             <form-kit
+                v-model="state.title"
                 type="text"
                 id="create-task-title"
                 name="title"
@@ -59,9 +97,10 @@
                 outer-class="mb-4"
                 input-class="w-3/4"
                 message-class="text-rose-800"
-                placeholder="Title of the project"
+                placeholder="Title of the task"
             />
             <form-kit
+                v-model="state.description"
                 type="textarea"
                 id="create-task-description"
                 validation="required"
@@ -73,23 +112,45 @@
                 message-class="text-rose-800"
                 placeholder="Description of the task"
             />
-            <FormKit
-                v-model="state.subtasks"
+            <form-kit
+                id="subtasks-list"
                 type="list"
+                label="Subtasks"
+                v-model="state.subtasks"
             >
-                <p>Please provide a list of emails.</p>
-                <FormKit
-                    v-for="task in state.subtasks"
-                    :key="task"
-                    v-model="task"
-                    label="Email address"
-                    validation="required|email"
-                />
                 <form-kit
-                    type="button"
-                    @click="addSubtask"
+                    v-for="(task, idx) in subtasks"
+                    :key="task"
+                    :id="task"
+                    type="text"
+                    :label="idx === 0 ? 'Subtasks' : ''"
+                    outer-class="mb-4"
+                    :sections-schema="{
+                        suffix: {
+                            $el: 'button',
+                            attrs: {
+                                class: 'text-xs ml-2',
+                                'data-key': '$id',
+                                type: 'button',
+                                onClick: removeSubtask
+                            },
+                            children: 'Remove'
+                        }
+                    }"
                 />
-            </FormKit>
+            </form-kit>
+            <form-kit
+                type="button"
+                label="Add a subtask"
+                @click="addSubtask"
+            />
+            <form-kit
+                v-model="state.status"
+                type="select"
+                label="Status"
+                name="status"
+                :options="statusOptions"
+            />
             <p 
                 v-if="state.callFailed"
                 class="text-rose-800 font-semibold mt-4"

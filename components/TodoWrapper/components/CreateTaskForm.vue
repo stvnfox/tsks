@@ -40,8 +40,9 @@
         try {
             // Create todo call
             await $client.todos.create.mutate({
-                id: Math.random(),
-                created_at: new Date().toLocaleDateString(),
+                // TODO: Create a random id
+                id: 2,
+                created_at: new Date().toISOString(),
                 projectId: Number(store.selectedProject?.id),
                 title: state.title,
                 description: state.description,
@@ -54,6 +55,7 @@
 
             closeModal()
         } catch(error) {
+            console.error(error)
             state.callFailed = true
         }
     }

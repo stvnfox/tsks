@@ -1,5 +1,6 @@
 <script setup lang="ts">
-    import { IProject, useProjectStore } from '@/stores/projectStore'
+    import type { IProject } from '@/stores/projectStore'
+    import { useProjectStore } from '@/stores/projectStore'
     
     const props = defineProps<{
         project: IProject
